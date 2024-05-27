@@ -2,8 +2,13 @@ import { Error,SongCard,Loader } from "../components";
 import {genres} from "../assets/constants";
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 import { useDispatch,useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Discover = () =>{ 
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     const {data,isFetching,error} =useGetTopChartsQuery();
     const dispatch = useDispatch();
@@ -48,7 +53,7 @@ const Discover = () =>{
                 </select>
             </div>
 
-            <div className=" flex flex-wrap sm:justify-start justify-center gap-8 ">
+            <div className=" flex flex-wrap sm:justify-start justify-center gap-4 ">
                     {datasliced.map((song,i)=>{
                         return (
                             <SongCard key={song.key} 
