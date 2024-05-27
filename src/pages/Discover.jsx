@@ -56,7 +56,7 @@ const Discover = () =>{
             <div className=" flex flex-wrap sm:justify-start justify-center gap-4 ">
                     {datasliced.map((song,i)=>{
                         return (
-                            <SongCard key={song.key} 
+                            <SongCard key={song.id} 
                                 song={song}
                                 i={i}
                                 activeSong={activeSong}
