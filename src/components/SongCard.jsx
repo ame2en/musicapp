@@ -16,17 +16,18 @@ const SongCard = ({song,i,activeSong,isPlaying,data}) => {
     dispatch(playPause(true));
   }
 
+  
 
   return (
     <div className=" flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer ">
         <div className=" relative w-full h-56 group">
           <div className={` absolute rounded-lg inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex 
-          ${activeSong?.title === song.title ? 'flex bg-black bg-opa-70 ': 'hidden'}`}>
+          ${activeSong?.attributes?.name === song.attributes.name ? 'flex bg-black bg-opa-70 ': 'hidden'}`}>
             <PlayPause 
               isPlaying={isPlaying}
               activeSong={activeSong}
               song={song}
-              handlePause = {handlePlayclick}
+              handlePause = {handlePauseClick}
               handlePlay = {handlePlayclick}
             />
           </div>
@@ -36,12 +37,12 @@ const SongCard = ({song,i,activeSong,isPlaying,data}) => {
         <div className="flex mt-4 flex-col">
           <p className="font-semibold text-lg text-white truncate">
             <Link to={`/songs/${song?.key}`}>
-              {song.title}
+              {song.attributes.name}
             </Link>
           </p> 
           <p className=" font-semibold text-sm text-gray-300 mt-1  truncate">
-            <Link to={song.artists ? `/artists/${song?.artists[0]?.adamid}` : `/top-artists`}>
-              {song.subtitle}
+            <Link to={song.artists ? `/artists/${song?.relationships.artists.href}` : `/top-artists`}>
+              {song.attributes.artistName}
             </Link>
           </p> 
 

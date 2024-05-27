@@ -5,16 +5,18 @@ import { useDispatch,useSelector } from "react-redux";
 
 const Discover = () =>{ 
 
+    const {data,isFetching,error} =useGetTopChartsQuery();
     const dispatch = useDispatch();
 
-    const {activeSong,isPlaying} = useSelector((state)=>{return state.player;})
-
-    const {data,isFetching,error} =useGetTopChartsQuery();
-
+    let datasliced;
     
-
+    datasliced = data?.slice(0,50);
+    
+    
+    let {activeSong,isPlaying} = useSelector((state)=> state.player)
+    
     const genreTitle = "Pop";
-    console.log(data);
+
 
     if(isFetching){
         return (
@@ -26,6 +28,7 @@ const Discover = () =>{
             <Error />
         );
     }
+
     
     return (
         <div className=" flex flex-col">
@@ -46,7 +49,7 @@ const Discover = () =>{
             </div>
 
             <div className=" flex flex-wrap sm:justify-start justify-center gap-8 ">
-                    {data.map((song,i)=>{
+                    {datasliced.map((song,i)=>{
                         return (
                             <SongCard key={song.key} 
                                 song={song}
