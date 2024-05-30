@@ -10,10 +10,6 @@ import { useEffect,useState } from "react";
 
 const SongDetails = () => {
 
-    
-    
-    // console.log(songdata);
-
 
     const dispatch  = useDispatch();
     const {songid} = useParams();
@@ -37,7 +33,6 @@ const SongDetails = () => {
         }
 
 
-        // console.log(text);
     }, [songdata]);
 
 
@@ -46,7 +41,7 @@ const SongDetails = () => {
     
     return ( 
         <div className="flex flex-col">
-            <DetailsHeader />
+            {/* <DetailsHeader /> */}
 
 
             <div className=" mb-10">

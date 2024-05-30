@@ -16,11 +16,14 @@ baseQuery: fetchBaseQuery({
 }),
 endpoints: (builder)=>({
     getTopCharts : builder.query({query:()=>  '/v1/charts/world?country_code=IN'}),
-    getSongDetails : builder.query({query:({songid})=>  `/v2/tracks/details?track_id=${songid}`})
+    getSongDetails : builder.query({query:({songid})=>  `/v2/tracks/details?track_id=${songid}`}),
+    getArtistDetails: builder.query({query:({artistid})=>  `v2/artists/details?artist_id=${artistid}`}),
+    
 })
 });
 
 export const {
     useGetTopChartsQuery,
-    useGetSongDetailsQuery
+    useGetSongDetailsQuery,
+    useGetArtistDetailsQuery
 } = ShazamCoreApi; 
